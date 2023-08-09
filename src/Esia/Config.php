@@ -4,21 +4,21 @@ namespace Esia;
 
 use Esia\Exceptions\InvalidConfigurationException;
 
-class Config
+class Config implements ConfigInterface
 {
-    private $clientId;
-    private $redirectUrl;
-    private $privateKeyPath;
-    private $certPath;
+    protected $clientId;
+    protected $redirectUrl;
+    protected $privateKeyPath;
+    protected $certPath;
 
-    private $portalUrl = 'http://esia-portal1.test.gosuslugi.ru/';
-    private $tokenUrlPath = 'aas/oauth2/te';
-    private $codeUrlPath = 'aas/oauth2/ac';
-    private $personUrlPath = 'rs/prns';
-    private $logoutUrlPath = 'idp/ext/Logout';
-    private $privateKeyPassword = '';
+    protected $portalUrl = 'http://esia-portal1.test.gosuslugi.ru/';
+    protected $tokenUrlPath = 'aas/oauth2/te';
+    protected $codeUrlPath = 'aas/oauth2/ac';
+    protected $personUrlPath = 'rs/prns';
+    protected $logoutUrlPath = 'idp/ext/Logout';
+    protected $privateKeyPassword = '';
 
-    private $scope = [
+    protected $scope = [
         'fullname',
         'birthdate',
         'gender',
@@ -29,13 +29,13 @@ class Config
         'inn',
     ];
 
-    private $tmpPath = '/var/tmp';
+    protected $tmpPath = '/var/tmp';
 
-    private $responseType = 'code';
-    private $accessType = 'offline';
+    protected $responseType = 'code';
+    protected $accessType = 'offline';
 
-    private $token = '';
-    private $oid = '';
+    protected $token = '';
+    protected $oid = '';
 
     /**
      * Config constructor.
