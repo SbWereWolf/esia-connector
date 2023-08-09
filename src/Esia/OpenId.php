@@ -32,24 +32,26 @@ class OpenId
     /**
      * @var SignerInterface
      */
-    private $signer;
+    protected $signer;
 
     /**
      * Http Client
      *
      * @var ClientInterface
      */
-    private $client;
+    protected $client;
 
     /**
      * Config
      *
-     * @var Config
+     * @var ConfigInterface
      */
-    private $config;
+    protected $config;
 
-    public function __construct(Config $config, ClientInterface $client = null)
-    {
+    public function __construct(
+        ConfigInterface $config,
+        ClientInterface $client = null,
+    ) {
         $this->config = $config;
         $this->client = $client ?? new GuzzleHttpClient(new Client());
         $this->logger = new NullLogger();
