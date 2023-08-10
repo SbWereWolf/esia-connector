@@ -2,7 +2,7 @@
 
 use Esia\Signer\HttpSigner;
 
-require_once './vendor/autoload.php';
+require_once './../vendor/autoload.php';
 
 /*
 clientId - ID вашего приложения.
@@ -34,7 +34,7 @@ $request = var_export(
 function writeLog($message)
 {
     $input = file_put_contents(
-        './tmp/log-' . time() . '.txt',
+        './../tmp/log-' . time() . '.txt',
         $message,
         FILE_APPEND,
     );
