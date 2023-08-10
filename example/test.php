@@ -34,7 +34,7 @@ $request = var_export(
 function writeLog($message)
 {
     $input = file_put_contents(
-        './../tmp/log-' . time() . '.txt',
+        './tmp/log-' . time() . '.txt',
         $message,
         FILE_APPEND,
     );
@@ -149,7 +149,7 @@ if (!$code) {
     ?>
 
     <p>
-        <a href="<?= $dest ?>">Войти через портал госуслуги</a>
+        <a href="<?= $dest ?>">Войти через портал ГосУслуги</a>
     </p>
     <?php
 }
