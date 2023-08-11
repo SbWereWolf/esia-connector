@@ -1,7 +1,14 @@
 {
   "name": "sbwerewolf/esia-connector",
-  "license": "MIT",
   "description": "OpenID ESIA authenticating",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nikolay Volkhin",
+      "email": "ulfnew@gmail.com"
+    }
+  ],
   "keywords": [
     "esia",
     "openid",
