@@ -25,21 +25,27 @@ HTTP запрос.
 
 При помощи [composer](https://getcomposer.org/download/):
 ```
-composer require --prefer-dist fr05t1k/esia
+composer require sbwerewolf/esia-connector
 ```
 ## Пример использования
 
 Пример использования в [test.php](./example/test.php)
 
+Предварительно:
+- Развернуть сервис веб подписи [CryptoPro](https://github.com/waves-enterprise/cryptopro-sign.git)
+- Соответственно запустить с параметрами по умолчанию, так что бы
+  по адресу `http://localhost:3037/cryptopro/sign` происходила
+  обработка POST запроса на подписание произвольного текста,
+  сигнатура вызова {"text": "$message"} (использовать формат JSON)
+
 Как запустить:
-- Развернуть [CryptoPro](https://github.com/waves-enterprise/cryptopro-sign.git)
-- По адресу `http://localhost:3037/cryptopro/sign` должна происходить
-обработка POST запроса на подписание произвольного текста 
 - `cd ./example/`
 - `php -S  localhost:8000 test.php`
 - Открыть в браузере localhost:8000
 - Перейти по ссылке `Войти через портал ГосУслуги`
-- Разрешить доступ к информации с ГосУслуг
+- Выполнить аутентификацию на портале ГосУслуг
+- Авторизовать для вашей организации доступ
+  к данным профиля пользователя (ГосУслуг)
 - Произойдёт редирект на `localhost:8000`
 - На странице будут отображены данные полученные с ГосУслуг
 
@@ -49,7 +55,7 @@ composer require --prefer-dist fr05t1k/esia
 ```php
 <?php 
 $config = new \Esia\ConfigWithoutKeyPair([
-    'clientId' => 'U407501',
+    'clientId' => 'U407501', /* Код вашей организации в ЕСИА */
     'redirectUrl' => 'http://localhost:8000/',
     'portalUrl' => 'https://esia-portal1.test.gosuslugi.ru/',
     'scope' => [
