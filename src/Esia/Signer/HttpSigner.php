@@ -2,8 +2,7 @@
 
 namespace Esia\Signer;
 
-use Esia\Signer\Exceptions\SignFailException;
-use Exception;
+use JsonException;
 
 class HttpSigner
     extends AbstractSignerPKCS7
@@ -17,6 +16,12 @@ class HttpSigner
     private string $headers = '';
     private string $method;
 
+    /**
+     * @param string $signingServerUrl
+     * @param array $headers
+     * @param string $method
+     * @noinspection PhpMissingParentConstructorInspection
+     */
     public function __construct(
         string $signingServerUrl,
         array $headers,
@@ -31,7 +36,9 @@ class HttpSigner
     }
 
     /**
-     * @throws Exception
+     * @param string $message
+     * @return string
+     * @throws JsonException
      */
     public function sign(string $message): string
     {
@@ -59,6 +66,7 @@ class HttpSigner
             JSON_THROW_ON_ERROR
         );
 
+        /** @noinspection PhpUnnecessaryLocalVariableInspection */
         $sign = $content['result'] ?? '';
 
         return $sign;

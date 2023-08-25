@@ -40,7 +40,7 @@ composer require sbwerewolf/esia-connector
 
 Как запустить:
 - `cd ./example/`
-- `php -S  localhost:8000 test.php`
+- `php -S localhost:8000 test.php`
 - Открыть в браузере localhost:8000
 - Перейти по ссылке `Войти через портал ГосУслуги`
 - Выполнить аутентификацию на портале ГосУслуг

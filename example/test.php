@@ -1,7 +1,5 @@
 <?php
 
-use Esia\Signer\HttpSigner;
-
 require_once './../vendor/autoload.php';
 
 /*
@@ -59,82 +57,23 @@ function printout(
 printout('Request data is ', $request);
 
 
+/** @noinspection PhpUnhandledExceptionInspection */
 $config = new \Esia\ConfigWithoutKeyPair([
     'clientId' => 'U407501',
     'redirectUrl' => 'http://localhost:8000/',
     'portalUrl' => 'https://esia-portal1.test.gosuslugi.ru/',
     'scope' => [
-        /*
-         * user info
-        'fullname',
-        'birthdate',
-        'gender',
-        'citizenship',
-        'snils',
-        'inn',
-        'id_doc',
-        'birthplace',
-        'medical_doc',
-        'military_doc',
-        'foreign_passport_doc',
-        'drivers_licence_doc',
-        'birth_cert_doc',
-        'residence_doc',
-        'temporary_residence_doc',
-        'vehicles',
-        'email',
-        'mobile',
-        'addresses',
-        'usr_org',
-        'usr_avt',
-        'self_employed',
-
-        children info
-        'kid_fullname',
-        'kid_birthdate',
-        'kid_gender',
-        'kid_snils',
-        'kid_inn',
-        'kid_birth_cert_doc',
-        'kid_medical_doc',
-
-        org info
-        'org_shortname',
-        'org_fullname',
-        'org_type',
-        'org_ogrn',
-        'org_inn',
-        'org_leg',
-        'org_kpp',
-        'org_agencyterrange',
-        'org_agencytype',
-        'org_oktmo',
-        'org_ctts',
-        'org_addrs',
-        'org_vhls',
-        'org_grps',
-        'org_emps',
-        'org_brhs',
-        'org_brhs_ctts',
-        'org_brhs_addrs',
-        'org_rcs',
-        'org_stms',
-        'org_invts',
-        'categories',
-        'org_ra',
-        */
-        'birthdate', /*     Просмотр даты вашего рождения */
         'fullname', /* Просмотр вашей фамилии, имени и отчества */
         'id_doc', /* Просмотр данных о вашем документе, удостоверяющем личность */
 
     ],
 ]);
 
-$signer = new HttpSigner(
+$signer = new Esia\Signer\HttpSigner(
     'http://localhost:3037/cryptopro/sign',
     [
         'Content-Type' => 'application/json',
-        'accept' => '*/*',
+        'Accept' => '*/*', /* не обязательный заголовок */
     ],
     'POST',
 );
