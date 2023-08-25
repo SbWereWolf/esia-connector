@@ -32,14 +32,14 @@ class OpenId
     /**
      * @var SignerInterface
      */
-    protected $signer;
+    protected SignerInterface $signer;
 
     /**
      * Http Client
      *
      * @var ClientInterface
      */
-    protected $client;
+    protected ClientInterface $client;
 
     /**
      * Config
@@ -74,7 +74,7 @@ class OpenId
     /**
      * Get config
      */
-    public function getConfig(): Config
+    public function getConfig(): ConfigInterface
     {
         return $this->config;
     }
@@ -86,10 +86,10 @@ class OpenId
      *     <a href="<?=$esia->buildUrl()?>">Login</a>
      * ```
      *
-     * @return string|false
+     * @return string
      * @throws SignFailException
      */
-    public function buildUrl()
+    public function buildUrl(): string
     {
         $timestamp = $this->getTimeStamp();
         $state = $this->buildState();
